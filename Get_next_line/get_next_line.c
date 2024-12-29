@@ -12,6 +12,24 @@
 
 #include "get_next_line.h"
 
+static char	*ft_strchr(char *s, int c)
+{
+	unsigned int	i;
+	char			cc;
+
+	cc = (char) c;
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == cc)
+			return ((char *) &s[i]);
+		i++;
+	}
+	if (s[i] == cc)
+		return ((char *) &s[i]);
+	return (NULL);
+}
+
 static char	*_set_line(char *line_buffer)
 {
 	char	*left_c;
@@ -56,24 +74,6 @@ static char	*fill_linebuffer(int fd, char *left_c, char *buffer)
 		return (NULL);
 	}
 	return (left_c);
-}
-
-static char	*ft_strchr(char *s, int c)
-{
-	unsigned int	i;
-	char			cc;
-
-	cc = (char) c;
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == cc)
-			return ((char *) &s[i]);
-		i++;
-	}
-	if (s[i] == cc)
-		return ((char *) &s[i]);
-	return (NULL);
 }
 
 char	*get_next_line(int fd)

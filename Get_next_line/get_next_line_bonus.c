@@ -12,6 +12,25 @@
 
 #include "get_next_line_bonus.h"
 
+
+static char	*ft_strchr(char *s, int c)
+{
+	unsigned int	i;
+	char			cc;
+
+	cc = (char) c;
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == cc)
+			return ((char *) &s[i]);
+		i++;
+	}
+	if (s[i] == cc)
+		return ((char *) &s[i]);
+	return (NULL);
+}
+
 static char	*_set_line(char *line_buffer)
 {
 	char	*left_c;
@@ -59,24 +78,6 @@ static char	*_fill_line_buffer(int fd, char *left_c, char *buffer)
 			break ;
 	}
 	return (left_c);
-}
-
-static char	*ft_strchr(char *s, int c)
-{
-	unsigned int	i;
-	char			cc;
-
-	cc = (char) c;
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == cc)
-			return ((char *) &s[i]);
-		i++;
-	}
-	if (s[i] == cc)
-		return ((char *) &s[i]);
-	return (NULL);
 }
 
 char	*get_next_line(int fd)
